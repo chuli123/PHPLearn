@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //按钮单击时执行
+            $("#testAjax").click(function(){
+
+                $.ajax({
+                    type : "POST",  //提交方式
+                    url : "add.php",//路径
+                    data : "name=garfield&age=18",//数据，这里使用的是Json格式进行传输
+                    success : function(result) {//返回数据根据结果进行相应的处理
+                        console.info(result);
+
+                        // if (result.success ) {
+                        //     $("#u1").json();
+                        // } else {
+                        //     $("#u1").text("删除数据失败");
+                        // }
+                    }
+                });
+                //Ajax调用处理
+//                var html = $.ajax({
+//                    type: "POST",
+//                    url: "add.php",
+//                    data: "name=garfield&age=18",//在php中data: "name=$tt&id=$id&content="+text,
+//                    async: false
+//
+//
+//                }).responseText;
+//                $("#myDiv").html('<h2>'+html+'</h2>');
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="myDiv"><h2>通过 AJAX 改变文本</h2></div>
+<button id="testAjax" type="button">Ajax改变内容</button>
+</body>
+</html>
